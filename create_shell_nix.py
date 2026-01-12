@@ -4,6 +4,7 @@ This script creates a boilerplate for a basic Nix shell with a custom Python3 in
 '''
 #Import libraries and modules
 import argparse
+import sys
 from pathlib import Path
 
 #Define positional and optional arguments of script
@@ -98,7 +99,7 @@ files = list(DEV_ENV_DIR.rglob("shell.nix"))
 should_exit = check_for_overwrite(matches=files)
 
 if should_exit:
-    exit
+    sys.exit(0)
 else:
     create_shell_nix(new_shell_path=DEV_ENV_DIR / "shell.nix")
     print("New shell.nix created.")
